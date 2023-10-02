@@ -5,6 +5,22 @@ from datetime import date
 
 app = FastAPI()
 
+def luhn_algorithm(card_number: str):
+    total_sum = 0
+    parity = len(card_number) % 2
+
+    for i in range(len(card_number)):
+        digit = int(card_number[i])
+
+        if (i % 2) == parity:
+            digit *= 2
+            if digit > 9:
+                digit -= 9
+
+        total_sum += digit
+
+    return total_sum % 10 == 0
+
 @app.post("/credit-card")
 async def validate_credit_card(credit_card: CreditCard):
 
@@ -22,6 +38,7 @@ async def validate_credit_card(credit_card: CreditCard):
             raise HTTPException(status_code=400, detail="CVV must be exactly 3 digits")
     if credit_card.expiration_date <= str(date.today()):
         raise HTTPException(status_code=400, detail="Expiration date must be in the future")
-
+    if not luhn_algorithm(credit_card.number):
+        raise HTTPException(status_code=400, detail="Invalid credit card number")
     
     return {"status": "ok"}
