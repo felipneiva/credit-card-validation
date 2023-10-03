@@ -1,6 +1,6 @@
 # credit-card-validation
 
-This is the Credit Card Validation System. This application is built using React for the front-end and FastAPI for the back-end. It allows you to check if a Credit Card is valid.
+Welcome to the Credit Card Validation System. This application is built using React for the front-end and FastAPI for the back-end. It allows you to check if a Credit Card is valid.
 
 ## Requirements
 
@@ -50,5 +50,5 @@ cd ../client
 npm run dev
 ```
 3. Access the application in your web browser at http://localhost:5173.
-4. Enter a credit card number in the input fields and click the "Submit" button to see the results.
+4. Enter a credit card in the input fields and click the "Submit" button to see the results.
 
