@@ -14,13 +14,11 @@ function App() {
     const cardNumber = document.getElementById('cardNumber').value
     const expirationDate = document.getElementById('expirationDate').value
     const cvv = document.getElementById('cvv').value
-    const name = document.getElementById('name').value
 
     Axios.post('http://localhost:8000/credit-card', {
       number: cardNumber,
       expiration_date: expirationDate,
       cvv: cvv,
-      name: name
     }).then((response) => {
       console.log(response.data)
       setMessage('Valid credit card')
@@ -42,8 +40,6 @@ function App() {
           <input className='Input' type="text" id="expirationDate" required/> 
           <label for="username">CVV:</label>
           <input className='Input' type="text" id="cvv" required/> 
-          <label for="username">Owner:</label>
-          <input className='Input' type="text" id="name" required/> 
           <button className='Button' type="submit">Submit</button>
           <p className={messageClass}>{message}</p>
           

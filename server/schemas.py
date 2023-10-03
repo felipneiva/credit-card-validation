@@ -4,5 +4,4 @@ class CreditCard(BaseModel):
     number: str
     expiration_date: str
     cvv: str
-    name: str
 
